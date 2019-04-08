@@ -22,8 +22,8 @@ class AddGear extends Component {
                     <input type="text" class="form-control" id="gearName" placeholder="What do you call it?"/>
                 </div>
                 <div class="form-group col-md-5">
-                    <label for="inputPassword4">Brand</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password"/>
+                    <label for="brand">Brand</label>
+      <input type="text" class="form-control" id="brand" placeholder="Brand"/>
     </div>
   </div>
   <div className="form row">
@@ -56,7 +56,7 @@ class AddGear extends Component {
  
      
   </div>
-  <button type="submit" class="btn btn-primary">Add Item</button>
+  <button type="submit" class="btn btn-primary" onSubmit = >Add Item</button>
 </form>
       </AllPage>
     );
