@@ -24,7 +24,7 @@ class AddGear extends Component {
     // this.handleClick = this.handleClick.bind(this)
   }
   
-  // handleChange(e){
+  // handleChange=(e)=>{
   //   e.preventDefault()
   //   this.setState({
   //     [e.target.name]: e.target.value})
@@ -70,7 +70,7 @@ handleSubmit= async (e)=>{
             <div className="form-row">
                 <div className="form-group col-md-4">
                     <label HTMLfor="gearName">Gear Item</label>
-                    <input type="text" className="form-control" name="name" placeholder="What do you call it?" value={this.state.name} onChange={e =>this.setState({name: e.target.value})}/>
+                    <input type="text" className="form-control" name="name" placeholder="What do you call it?" value={this.state.name} />
                 </div>
                 <div className="form-group col-md-4">
                     <label HTMLfor="brand">Brand</label>

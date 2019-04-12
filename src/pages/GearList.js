@@ -8,6 +8,7 @@ import { MDBCard, MDBCardBody, MDBCardHeader, MDBInput, MDBBtn, MDBTable, MDBTab
 
 
 class GearList extends Component {
+  //State is what the data is presently
   state ={
       gear:[]
       // name:'',
@@ -16,7 +17,9 @@ class GearList extends Component {
       // catagory:'',
       // units: ''
     }
-  
+  //Props are the properties themselves 
+  //constructor and state building the bookshelf
+  //go and fetch the books
  componentDidMount(){
   fetch('http://localhost:4001/')
     .then(result =>  {
@@ -27,23 +30,24 @@ class GearList extends Component {
       this.setState({gear: result})
     });}
    
-  
+   deleteItem = (id) = async (e)=>{
+     e.preventDefault()
+       debugger
+      const data = JSON.stringify(this.state._id)
+        await fetch("http://localhost:4001/",{
+          method:"DELETE",
+          body: data,
+          headers:{
+            "Content-Type": "application/json"
+          }
+        }
+    
+    
+        )}
 
   render() {
 
-   const deleteItem = async (e)=>{
-     debugger
-      const data = JSON.stringify(this.state._id)
-      await fetch("http://localhost:4001/",{
-        method:"DELETE",
-        body: data,
-        headers:{
-          "Content-Type": "application/json"
-        }
-      }
-  
-  
-      )}
+   
       
     
     console.log(this.state)
@@ -59,7 +63,7 @@ class GearList extends Component {
           )
             )}
         </div>
-            <MDBTable responsive striped={`true`} bordered>
+            <MDBTable responsive striped={true} bordered>
       <MDBTableHead>
         <tr>
           <th>Gear Name</th>
@@ -76,7 +80,9 @@ class GearList extends Component {
           <td>{gear.brand}</td>
           <td>{gear.weight}</td>
           <td>{gear.category}</td>
-          <td><MDBIcon icon="edit" onClick={e =>deleteItem(gear._id)} /><MDBIcon icon="trash-alt" className="ml-4" value={gear._id} onClick={e=>deleteItem(this.state.gear._id)}/></td>
+          <td><MDBIcon icon="edit"/><MDBIcon icon="trash-alt" className="ml-4" key={index} 
+          value={gear._id} 
+          onClick={this.deleteItem(this.value)}/></td>
         </tr>
         ))}
       </MDBTableBody>
