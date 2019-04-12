@@ -5,29 +5,28 @@ class Navigation extends Component {
   render() {
     return (
       <div className="Navigation">
-        {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar w/ text</a>
+        <nav class="navbar navbar-expand-lg navbar-#24248f bg-dark">
+  <a class="navbar-brand" href="/">Backpacking Gear</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/gearlist">Home <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="/gearlist">View Gear</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="/addgear">Add Gear</a>
       </li>
     </ul>
     <span class="navbar-text">
-      Navbar text with an inline element
+      Clint's Backpacking Gear
     </span>
   </div>
-</nav> */}
-<p>Nav here...</p>
+</nav>
       </div>
     );
   }

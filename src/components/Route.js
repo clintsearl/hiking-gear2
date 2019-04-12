@@ -1,8 +1,10 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import AddGear from '../pages/AddGear';
-import App from '../App';
+// import App from '../App';//this breaks it!! You'll have a never ending loop because you're 
+//putting the Router on the App page and then trying to put the App page in the router 
 import GearList from '../pages/GearList';
+import AddGear from '../pages/AddGear';
+import Welcome from '../pages/Welcome'
 
 // class Routing extends Component {
     // render() {
@@ -11,14 +13,13 @@ import GearList from '../pages/GearList';
 const Routing = () =>(
     <Router>
         <Switch>    
-            {/* <Route exact path="/" component={App}/> */}
+            <Route exact path="/" component={Welcome}/>
             <Route path="/addgear" component={AddGear}/>
             <Route path="/gearlist" component={GearList}/>
         </Switch>
     </Router>
  );
-// }
-// }
+
 
 export default Routing;
 
