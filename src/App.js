@@ -3,7 +3,7 @@ import './App.css';
 import Navigation from './components/navigation'
 import Routing from './components/Route'
 // import {Link} from 'react-router-dom'
-//stuff is changing! test branch for firebase
+//stuff is changing! test branch for NeDB
 
 
 class App extends Component {

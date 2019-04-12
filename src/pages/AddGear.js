@@ -1,62 +1,113 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 
+
 const AllPage= styled.main`{
-  margin: auto;
-  max-width:80%; 
-  textAlign: center;
-  alignItems: center; 
+  margin-left:auto;
+  max-width:70%;
 }`
 
-class AddGear extends Component {
 
 
+class AddGear extends Component {  
+  // constructor(props){
+  //   super(props)
+    state ={
+     
+      name:'',
+      brand: '',
+      weight: 4,
+      category:'',
+      units: ''
+    // }
+    // this.handleChange = this.handleChange.bind(this)
+    // this.handleClick = this.handleClick.bind(this)
+  }
+  
+  // handleChange(e){
+  //   e.preventDefault()
+  //   this.setState({
+  //     [e.target.name]: e.target.value})
+  // }
+  // handleClick(e){
+  //   e.preventDefault()
+  //   this.setState({
+  //     [e.target.name]: e.target.value})
+    
+  // }
+//  vartest ={name:"clint"}
+// addItem =(test) =>{
+  
+//   db.insert(test)
+
+// }
+
+handleSubmit= async (e)=>{
+ e.preventDefault()
+
+ const data = JSON.stringify(this.state)
+ console.log("first", data)
+//  debugger
+  await fetch("http://localhost:4001",{
+    method:"POST",
+    body: data,
+    headers:{
+      "Content-Type": "application/json"
+    }
+   
+
+  },console.log("second", data)).then(response => console.log(response.json()))
+    
+  }
 
   render() {
+    
+    console.log(this.state)
+    
     return (
       <AllPage>
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-5">
-                    <label for="gearName">Gear Item</label>
-                    <input type="text" class="form-control" id="gearName" placeholder="What do you call it?"/>
+        <form onSubmit= {this.handleSubmit}>
+            <div className="form-row">
+                <div className="form-group col-md-4">
+                    <label HTMLfor="gearName">Gear Item</label>
+                    <input type="text" className="form-control" name="name" placeholder="What do you call it?" value={this.state.name} onChange={e =>this.setState({name: e.target.value})}/>
                 </div>
-                <div class="form-group col-md-5">
-                    <label for="brand">Brand</label>
-      <input type="text" class="form-control" id="brand" placeholder="Brand"/>
+                <div className="form-group col-md-4">
+                    <label HTMLfor="brand">Brand</label>
+      <input type="text" className="form-control" name="brand" placeholder="Brand" value={this.state.brand} onChange={e =>this.setState({brand: e.target.value})} />
     </div>
   </div>
   <div className="form row">
-  <div class="form-group col-md-3">
-    <label for="weight">Weight</label>
-    <input type="text" class="form-control" id="weight" placeholder="Select the Units"/>
+  <div className="form-group col-md-3">
+    <label HTMLfor="weight">Weight</label>
+    <input type="number" step="0.01" className="form-control" name="weight" placeholder="Select the Units" value={this.state.value} onChange={e =>this.setState({weight: e.target.value})}/>
     </div>
-    <div class="form-group col-md-5">
-      <label for="Catagory">Catagory</label>
-      <select id="Catagory" class="form-control">
-        <option selected>Choose...</option>
-        <option>Essentials</option>
-        <option>Sleep</option>
-        <option>Kitchen</option>
-        <option>Clothing</option>
-        <option>Personal</option>
-        <option>Emergency</option>
+    <div className="form-group col-md-5">
+      <label HTMLfor="category">Category</label>
+      <select id="category" className="form-control" onChange={e =>this.setState({category: e.target.value})}>
+        <option defaultValue="uncatagorized">Choose...</option>
+        <option value="essentials">Essentials</option>
+        <option value="sleep">Sleep</option>
+        <option value="kitchen">Kitchen</option>
+        <option value="clothing">Clothing</option>
+        <option value="personal">Personal</option>
+        <option value="emergency">Emergency</option>
       </select>
     </div>
 
     </div>
-    <div class="form-group col-md-2">
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-    <button type="button" class="btn btn-secondary">lb</button>
-    <button type="button" class="btn btn-secondary">oz</button>
-    <button type="button" class="btn btn-secondary">g</button> 
+    <div className="form-group col-md-2">
+    <div className="btn-group mr-2" role="group" aria-label="First group">
+    {/* <button type="button" className="btn btn-secondary" value= "lb" onClick={e =>this.setState({units: e.target.value})} name="units">lb</button> */}
+    <button type="button" className="btn btn-secondary" value= "oz" onClick={e =>this.setState({units: e.target.value})} name="units">oz</button>
+    <button type="button" className="btn btn-secondary" value= "g" onClick={e =>this.setState({units: e.target.value})} name="units">g</button> 
     </div> 
   
   
  
      
   </div>
-  <button type="submit" class="btn btn-primary" onSubmit = >Add Item</button>
+  <button type="submit" className="btn btn-primary" style={{justifyContent:'center'}}>Add Item</button>
 </form>
       </AllPage>
     );
