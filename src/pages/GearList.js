@@ -30,20 +30,20 @@ class GearList extends Component {
       this.setState({gear: result})
     });}
    
-   deleteItem = (id) = async (e)=>{
-     e.preventDefault()
-       debugger
-      const data = JSON.stringify(this.state._id)
-        await fetch("http://localhost:4001/",{
-          method:"DELETE",
-          body: data,
-          headers:{
-            "Content-Type": "application/json"
-          }
-        }
+  //  deleteItem =  async (e)=>{
+    
+  //     //  debugger
+  //     const data = JSON.stringify(this.state._id)
+  //       await fetch("http://localhost:4001/",{
+  //         method:"DELETE",
+  //         body: data,
+  //         headers:{
+  //           "Content-Type": "application/json"
+  //         }
+  //       }
     
     
-        )}
+  //       )}
 
   render() {
 
@@ -55,16 +55,16 @@ class GearList extends Component {
       
       <div className="GearList">
         <h1>List of all your stuff</h1>
-        <div>
+        {/* <div>
           {this.state.gear.map((gear, index)=>(
             <div key={index}>
                 <h3>{gear.name}</h3>
             </div>
           )
             )}
-        </div>
-            <MDBTable responsive striped={true} bordered>
-      <MDBTableHead>
+        </div> */}
+            <MDBTable responsive striped color= 'black'>
+      <MDBTableHead  color= 'black'>
         <tr>
           <th>Gear Name</th>
           <th>Brand</th>
@@ -75,14 +75,15 @@ class GearList extends Component {
       </MDBTableHead>
       <MDBTableBody>
         {this.state.gear.map((gear, index)=>(
-        <tr key={index} striped>
-          <td>{gear._id}</td>
+        <tr key={index}>
+          <td>{gear.name}</td>
           <td>{gear.brand}</td>
           <td>{gear.weight}</td>
           <td>{gear.category}</td>
           <td><MDBIcon icon="edit"/><MDBIcon icon="trash-alt" className="ml-4" key={index} 
           value={gear._id} 
-          onClick={this.deleteItem(this.value)}/></td>
+          // onClick={this.deleteItem(this.value)}
+          /></td>
         </tr>
         ))}
       </MDBTableBody>

@@ -16,7 +16,7 @@ class AddGear extends Component {
      
       name:'',
       brand: '',
-      weight: 4,
+      weight: 0,
       category:'',
       units: ''
     // }
@@ -24,23 +24,17 @@ class AddGear extends Component {
     // this.handleClick = this.handleClick.bind(this)
   }
   
-  // handleChange=(e)=>{
-  //   e.preventDefault()
-  //   this.setState({
-  //     [e.target.name]: e.target.value})
-  // }
-  // handleClick(e){
-  //   e.preventDefault()
-  //   this.setState({
-  //     [e.target.name]: e.target.value})
+  handleChange=(e)=>{
+    this.setState({
+      [e.target.name]: e.target.value}
+      , console.log(e.target.value))
+  }
+  handleClick(e){
+    e.preventDefault()
+    this.setState({
+      [e.target.name]: e.target.value})
     
-  // }
-//  vartest ={name:"clint"}
-// addItem =(test) =>{
-  
-//   db.insert(test)
-
-// }
+  }
 
 handleSubmit= async (e)=>{
  e.preventDefault()
@@ -70,21 +64,21 @@ handleSubmit= async (e)=>{
             <div className="form-row">
                 <div className="form-group col-md-4">
                     <label HTMLfor="gearName">Gear Item</label>
-                    <input type="text" className="form-control" name="name" placeholder="What do you call it?" value={this.state.name} />
+                    <input type="text" className="form-control" name="name" placeholder="What do you call it?" value={this.state.name} onChange={this.handleChange} />
                 </div>
                 <div className="form-group col-md-4">
                     <label HTMLfor="brand">Brand</label>
-      <input type="text" className="form-control" name="brand" placeholder="Brand" value={this.state.brand} onChange={e =>this.setState({brand: e.target.value})} />
+      <input type="text" className="form-control" name="brand" placeholder="Brand" value={this.state.brand} onChange={this.handleChange} />
     </div>
   </div>
   <div className="form row">
   <div className="form-group col-md-3">
     <label HTMLfor="weight">Weight</label>
-    <input type="number" step="0.01" className="form-control" name="weight" placeholder="Select the Units" value={this.state.value} onChange={e =>this.setState({weight: e.target.value})}/>
+    <input type="number" step="0.01" className="form-control" name="weight" placeholder="Select the Units" value={this.state.value} onChange={this.handleChange}/>
     </div>
     <div className="form-group col-md-5">
       <label HTMLfor="category">Category</label>
-      <select id="category" className="form-control" onChange={e =>this.setState({category: e.target.value})}>
+      <select name="category" className="form-control" onChange={this.handleChange}>
         <option defaultValue="uncatagorized">Choose...</option>
         <option value="essentials">Essentials</option>
         <option value="sleep">Sleep</option>
@@ -99,8 +93,8 @@ handleSubmit= async (e)=>{
     <div className="form-group col-md-2">
     <div className="btn-group mr-2" role="group" aria-label="First group">
     {/* <button type="button" className="btn btn-secondary" value= "lb" onClick={e =>this.setState({units: e.target.value})} name="units">lb</button> */}
-    <button type="button" className="btn btn-secondary" value= "oz" onClick={e =>this.setState({units: e.target.value})} name="units">oz</button>
-    <button type="button" className="btn btn-secondary" value= "g" onClick={e =>this.setState({units: e.target.value})} name="units">g</button> 
+    <button type="button" className="btn btn-secondary" value= "oz" onClick={this.handleChange} name="units">oz</button>
+    <button type="button" className="btn btn-secondary" value= "g" onClick={this.handleChange} name="units">g</button> 
     </div> 
   
   
