@@ -3,7 +3,7 @@ import React, { Component, useState} from 'react';
 import { MDBCard, MDBCardHeader, MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBTableFoot, MDBIcon, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBModal, MDBContainer } from 'mdbreact';
 // import Modal from '../components/Modal'
 import styled from 'styled-components'
-
+import EditGear from './EditGear'
 
 const allpage = styled.main`{
 }`
@@ -16,7 +16,14 @@ class GearList extends Component {
     gear: [],
     modal: false,
     // editGear: {},
-    editGearItem:{}
+    editGearItem:{
+      _id:null,
+      name:"",
+    },
+    edited:{
+      _id:0,
+      name:""
+    }
     // name:'',
     // brand: '',
     // weight: 0,
@@ -53,11 +60,13 @@ class GearList extends Component {
   }
 
   editItem = async (e) => {
-    // e.preventDefault()
+    e.preventDefault()
     // console.log("all", this.state)
-    // let data = 
-    const data = JSON.stringify(this.state)
-    await fetch(`http://localhost:4001/gearlist/:${data._id}`, {
+    let id = this.state.edited._id
+    let data = JSON.stringify(this.state.edited)
+    debugger
+    console.log("edit",data)
+    await fetch(`http://localhost:4001/gearlist/${id}`, {
       method: "PUT",
       body: data,
       headers: {
@@ -86,10 +95,20 @@ class GearList extends Component {
     // .then.props.push(Link ="/gearlist")
   }
   handleChange=(e)=>{
-    this.setState({
-      [e.target.name]: e.target.value}
-      , console.log(e.target.value))
-  }
+
+    // debugger
+    let edited = {...this.state.editGearItem}
+    // let fn= (edited)=>{
+    // {edited:{e.target.name= e.target.value}}
+    // return edited}
+    // this.setState(fn(e, edited))
+    edited.name = e
+    this.setState({edited})
+      //looks for the object key editGearItem then the object inside with the key name: and assigns it the new value.
+      // {editGearItem: {name: e.target.value}},
+    // this.setState({edited: {_id: this.state.editGearItem.id}});
+    
+    }
 
   render() {
 
@@ -111,8 +130,8 @@ class GearList extends Component {
             )}
         </div> */}
         
-        <MDBTable responsive striped color='black'>
-          <MDBTableHead color='black'>
+        <MDBTable responsive striped >
+          <MDBTableHead>
             <tr>
               <th>Gear Name</th>
               <th>Brand</th>
@@ -130,8 +149,8 @@ class GearList extends Component {
                 <td>{gear.category}</td>
                 <td>
                   <button className="btn btn-outline-secondary waves-effect" value={gear._id} 
-                  // onClick={(e) => this.toggle(e.target.value)}
-                  onClick={lin}
+                  onClick={(e) => this.toggle(e.target.value)}
+                  // onClick={t}
                   >Edit</button>
                   {/* <MDBIcon icon="edit"/> */}
 
@@ -155,23 +174,23 @@ class GearList extends Component {
           </MDBTableFoot>
         </MDBTable>
         
-            {/* <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
+            <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
               <MDBModalHeader toggle={this.toggle}>MDBModal title</MDBModalHeader>
-              <form onSubmit={(e)=>this.editItem(e.target)}>
+              <form onSubmit={this.editItem}>
               <MDBModalBody>
                 <p>Edit your gear</p>
               
-                <input type="text" name="name" placeholder={this.state.editGearItem.name} onChange={this.handleChange}></input>
-
+                <input type="text" name='name' placeholder={this.state.editGearItem.name} onChange={(e)=>this.handleChange(e.target.value)}></input>
+                <input type="text" name={this.state.editGearItem.name} placeholder={this.state.editGearItem._id} onChange={(e)=>this.handleChange(e.target.value)}></input>
               </MDBModalBody>
               <MDBModalFooter>
                 <MDBBtn color="secondary" >Close</MDBBtn>
-                <button color="primary" type="submit">Save changes</button>
+                <MDBBtn color="primary" type="submit">Save changes</MDBBtn>
 
               </MDBModalFooter>
                   </form>
-            </MDBModal> */}
-            {/* </MDBContainer> */}
+            </MDBModal> 
+            {/* </MDBContainer>*/}
 
             
        </div>

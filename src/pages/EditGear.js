@@ -15,7 +15,7 @@ const AllPage= styled.main`{
 
 
 
-class AddGear extends Component {  
+class EditGear extends Component {  
   // constructor(props){
   //   super(props)
     state ={
@@ -114,4 +114,4 @@ handleSubmit= async (e)=>{
   }
 }
 
-export default AddGear;
+export default EditGear;
