@@ -47,11 +47,12 @@ handleSubmit= async (e)=>{
     body: data,
     headers:{
       "Content-Type": "application/json"
+      }
     }
-   
 
-  },console.log("second", data)).then(response => console.log(response.json()))
-    
+  // console.log("second", data)).then(response => console.log(response.json())
+    )
+    this.props.history.push('/gearlist')    
   }
 
   render() {

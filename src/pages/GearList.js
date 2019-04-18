@@ -62,6 +62,7 @@ class GearList extends Component {
   editItem = async (e) => {
     e.preventDefault()
     // console.log("all", this.state)
+    debugger
     let id = this.state.edited._id
     let data = JSON.stringify(this.state.edited)
     debugger
@@ -76,13 +77,14 @@ class GearList extends Component {
     ).then(
       this.setState({
         modal: !this.state.modal
-      }))
+      }));this.componentDidMount()
   }
 
   deleteItem = async (e) => {
     // console.log("here",e)
     //  debugger
     let data = { _id: e }
+    // maybe add an if statement here to pevent it from sending an empty {} and deleting the first whatever it finds. or maybe it's not all that important because when it refreshs it will be gone and you wont need to worry about it.
     data = JSON.stringify(data)
     await fetch("http://localhost:4001/gearlist/", {
       method: "DELETE",
@@ -91,9 +93,12 @@ class GearList extends Component {
         "Content-Type": "application/json"
       }
     }
-    )
-    // .then.props.push(Link ="/gearlist")
+    );this.componentDidMount()
+// reload() 
+// const reload=()=>{this.setState(this.state)}
+// this.props.history.push('/gearlist')
   }
+  
   handleChange=(e)=>{
 
     // debugger
@@ -143,7 +148,7 @@ class GearList extends Component {
           <MDBTableBody>
             {this.state.gear.map((gear, index) => (
               <tr key={index}>
-                <td>{gear._id}</td>
+                <td>{gear.name}</td>
                 <td>{gear.brand}</td>
                 <td>{gear.weight}</td>
                 <td>{gear.category}</td>
