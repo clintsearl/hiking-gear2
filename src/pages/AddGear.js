@@ -3,9 +3,10 @@ import styled from 'styled-components'
 
 
 const AllPage= styled.main`{
-  margin-left:auto;
-  max-width:70%;
-}`
+   margin-left:auto;
+   margin-right:auto;
+   max-width:70%;
+ }`
 
 
 
@@ -19,7 +20,7 @@ class AddGear extends Component {
       weight: 0,
       category:'',
       units: ''
-    // }
+    // }3
     // this.handleChange = this.handleChange.bind(this)
     // this.handleClick = this.handleClick.bind(this)
   }
@@ -29,7 +30,7 @@ class AddGear extends Component {
       [e.target.name]: e.target.value}
       , console.log(e.target.value))
   }
-  handleClick(e){
+  handleClick=(e)=>{
     e.preventDefault()
     this.setState({
       [e.target.name]: e.target.value})
@@ -73,10 +74,7 @@ handleSubmit= async (e)=>{
     </div>
   </div>
   <div className="form row">
-  <div className="form-group col-md-3">
-    <label HTMLfor="weight">Weight</label>
-    <input type="number" step="0.01" className="form-control" name="weight" placeholder="Select the Units" value={this.state.value} onChange={this.handleChange}/>
-    </div>
+  
     <div className="form-group col-md-5">
       <label HTMLfor="category">Category</label>
       <select name="category" className="form-control" onChange={this.handleChange}>
@@ -89,7 +87,10 @@ handleSubmit= async (e)=>{
         <option value="emergency">Emergency</option>
       </select>
     </div>
-
+    <div className="form-group col-md-3">
+        <label HTMLfor="weight">Weight</label>
+        <input type="number" step="0.01" className="form-control" name="weight" placeholder="Select the Units" value={this.state.value} onChange={this.handleChange}/>
+    </div>
     </div>
     <div className="form-group col-md-2">
     <div className="btn-group mr-2" role="group" aria-label="First group">

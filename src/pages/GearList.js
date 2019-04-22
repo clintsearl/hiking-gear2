@@ -84,7 +84,7 @@ class GearList extends Component {
     // console.log("here",e)
     //  debugger
     let data = { _id: e }
-    // maybe add an if statement here to pevent it from sending an empty {} and deleting the first whatever it finds. or maybe it's not all that important because when it refreshs it will be gone and you wont need to worry about it.
+    // maybe add an if statement here to pevent it from sending an empty {} and deleting the first whatever it finds. or maybe it's not all that important because when it refreshes it will be gone and you wont need to worry about it.
     data = JSON.stringify(data)
     await fetch("http://localhost:4001/gearlist/", {
       method: "DELETE",
