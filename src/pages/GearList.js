@@ -34,7 +34,7 @@ class GearList extends Component {
   //constructor and state building the bookshelf
   //go and fetch the books
   componentDidMount() {
-    fetch('http://localhost:4001/')
+    fetch('https://hiking-api.herokuapp.com/')
       .then(result => {
         return result.json();
       })
@@ -44,7 +44,7 @@ class GearList extends Component {
   }
 
   toggle = async (e) => {
-    await fetch(`http://localhost:4001/${e}`)
+    await fetch(`https://hiking-api.herokuapp.com/${e}`)
       .then(result => {
         return result.json();
       })
@@ -67,7 +67,7 @@ class GearList extends Component {
     let data = JSON.stringify(this.state.edited)
     debugger
     console.log("edit",data)
-    await fetch(`http://localhost:4001/gearlist/${id}`, {
+    await fetch(`https://hiking-api.herokuapp.com/gearlist/${id}`, {
       method: "PUT",
       body: data,
       headers: {
@@ -86,7 +86,7 @@ class GearList extends Component {
     let data = { _id: e }
     // maybe add an if statement here to pevent it from sending an empty {} and deleting the first whatever it finds. or maybe it's not all that important because when it refreshes it will be gone and you wont need to worry about it.
     data = JSON.stringify(data)
-    await fetch("http://localhost:4001/gearlist/", {
+    await fetch("https://hiking-api.herokuapp.com/gearlist/", {
       method: "DELETE",
       body: data,
       headers: {

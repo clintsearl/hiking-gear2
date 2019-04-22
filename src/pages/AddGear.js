@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import { MDBContainer } from 'mdbreact';
 
 
-const AllPage= styled.main`{
+const form= styled.main`{
    margin-left:auto;
-   margin-right:auto;
    max-width:70%;
  }`
 
@@ -43,7 +43,7 @@ handleSubmit= async (e)=>{
  const data = JSON.stringify(this.state)
  console.log("first", data)
 //  debugger
-  await fetch("http://localhost:4001",{
+  await fetch("https://hiking-api.herokuapp.com/",{
     method:"POST",
     body: data,
     headers:{
@@ -61,7 +61,7 @@ handleSubmit= async (e)=>{
     console.log(this.state)
     
     return (
-      <AllPage>
+      <MDBContainer fluid>
         <form onSubmit= {this.handleSubmit}>
             <div className="form-row">
                 <div className="form-group col-md-4">
@@ -75,7 +75,7 @@ handleSubmit= async (e)=>{
   </div>
   <div className="form row">
   
-    <div className="form-group col-md-5">
+    <div className="form-group col-md-4">
       <label HTMLfor="category">Category</label>
       <select name="category" className="form-control" onChange={this.handleChange}>
         <option defaultValue="uncatagorized">Choose...</option>
@@ -92,7 +92,7 @@ handleSubmit= async (e)=>{
         <input type="number" step="0.01" className="form-control" name="weight" placeholder="Select the Units" value={this.state.value} onChange={this.handleChange}/>
     </div>
     </div>
-    <div className="form-group col-md-2">
+    <div className="form-group col-md-3">
     <div className="btn-group mr-2" role="group" aria-label="First group">
     {/* <button type="button" className="btn btn-secondary" value= "lb" onClick={e =>this.setState({units: e.target.value})} name="units">lb</button> */}
     <button type="button" className="btn btn-secondary" value= "oz" onClick={this.handleChange} name="units">oz</button>
@@ -105,7 +105,7 @@ handleSubmit= async (e)=>{
   </div>
   <button type="submit" className="btn btn-primary" style={{justifyContent:'center'}}>Add Item</button>
 </form>
-      </AllPage>
+      </MDBContainer>
     );
   }
 }
