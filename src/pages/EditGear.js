@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import { MDBContainer } from 'mdbreact';
+
+//!!!!!!
+// 
+//      Current plan, this is a copy of the add gear page I want to route to it
+//     then from here make the GET, and then the data placeholders. let them 
+//          change it, and then do the PUT  and redirect to the GearList
+// !!!!!
+
+const AllPage= styled.main`{
+  margin-left:auto;
+  max-width:70%;
+}`
 
 
-const form= styled.main`{
-   margin-left:auto;
-   max-width:70%;
- }`
 
-
-
-class AddGear extends Component {  
+class EditGear extends Component {  
   // constructor(props){
   //   super(props)
     state ={
@@ -20,7 +25,7 @@ class AddGear extends Component {
       weight: 0,
       category:'',
       units: ''
-    // }3
+    // }
     // this.handleChange = this.handleChange.bind(this)
     // this.handleClick = this.handleClick.bind(this)
   }
@@ -30,7 +35,7 @@ class AddGear extends Component {
       [e.target.name]: e.target.value}
       , console.log(e.target.value))
   }
-  handleClick=(e)=>{
+  handleClick(e){
     e.preventDefault()
     this.setState({
       [e.target.name]: e.target.value})
@@ -43,17 +48,16 @@ handleSubmit= async (e)=>{
  const data = JSON.stringify(this.state)
  console.log("first", data)
 //  debugger
-  await fetch("https://hiking-api.herokuapp.com/",{
+  await fetch("http://localhost:4001",{
     method:"POST",
     body: data,
     headers:{
       "Content-Type": "application/json"
-      }
     }
+   
 
-  // console.log("second", data)).then(response => console.log(response.json())
-    )
-    this.props.history.push('/gearlist')    
+  },console.log("second", data)).then(response => console.log(response.json()))
+    
   }
 
   render() {
@@ -61,7 +65,7 @@ handleSubmit= async (e)=>{
     console.log(this.state)
     
     return (
-      <MDBContainer fluid>
+      <AllPage>
         <form onSubmit= {this.handleSubmit}>
             <div className="form-row">
                 <div className="form-group col-md-4">
@@ -74,8 +78,11 @@ handleSubmit= async (e)=>{
     </div>
   </div>
   <div className="form row">
-  
-    <div className="form-group col-md-4">
+  <div className="form-group col-md-3">
+    <label HTMLfor="weight">Weight</label>
+    <input type="number" step="0.01" className="form-control" name="weight" placeholder="Select the Units" value={this.state.value} onChange={this.handleChange}/>
+    </div>
+    <div className="form-group col-md-5">
       <label HTMLfor="category">Category</label>
       <select name="category" className="form-control" onChange={this.handleChange}>
         <option defaultValue="uncatagorized">Choose...</option>
@@ -87,12 +94,9 @@ handleSubmit= async (e)=>{
         <option value="emergency">Emergency</option>
       </select>
     </div>
-    <div className="form-group col-md-3">
-        <label HTMLfor="weight">Weight</label>
-        <input type="number" step="0.01" className="form-control" name="weight" placeholder="Select the Units" value={this.state.value} onChange={this.handleChange}/>
+
     </div>
-    </div>
-    <div className="form-group col-md-3">
+    <div className="form-group col-md-2">
     <div className="btn-group mr-2" role="group" aria-label="First group">
     {/* <button type="button" className="btn btn-secondary" value= "lb" onClick={e =>this.setState({units: e.target.value})} name="units">lb</button> */}
     <button type="button" className="btn btn-secondary" value= "oz" onClick={this.handleChange} name="units">oz</button>
@@ -105,9 +109,9 @@ handleSubmit= async (e)=>{
   </div>
   <button type="submit" className="btn btn-primary" style={{justifyContent:'center'}}>Add Item</button>
 </form>
-      </MDBContainer>
+      </AllPage>
     );
   }
 }
 
-export default AddGear;
+export default EditGear;
