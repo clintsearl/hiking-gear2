@@ -3,12 +3,6 @@ import styled from 'styled-components'
 import staticImg from '../components/assets/pano-lake.jpg'
 
 const Allpage= styled.div`
-background-color:#202124;
-hight:100vh;
-width:100vw;
-display: flex;
-flex-direction:column;
-
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -22,26 +16,15 @@ const Background =styled.section`
     width:100vw;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
+   
 `
 const Message = styled.main`
 padding:5%;
-
-
-
-` 
-const LandingImg = styled.img`
-        background-color: #282c34;
-        max-width:100vw;  
-        align-items: center;
-        
+padding-bottom:2.5rem;
+      
 `
-const Footer = styled.footer`
-  background-color:#AD9477;
-  width:100vw;
-  position:absolute;
- bottom:0;
-`
+
 const Welcome =()=> {
     return(
       <Allpage>  
@@ -56,11 +39,7 @@ const Welcome =()=> {
             where you might be swept off to.”</p> 
             </Message>
             
-            <Footer>
-              Clint Earl
-              link
-              link
-            </Footer>
+            
         </Allpage>
         
     )
