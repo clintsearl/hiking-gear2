@@ -62,10 +62,8 @@ class GearList extends Component {
   editItem = async (e) => {
     e.preventDefault()
     // console.log("all", this.state)
-    debugger
     let id = this.state.edited._id
     let data = JSON.stringify(this.state.edited)
-    debugger
     console.log("edit",data)
     await fetch(`https://hiking-api.herokuapp.com/gearlist/${id}`, {
       method: "PUT",
@@ -125,6 +123,14 @@ class GearList extends Component {
 
       <div className="allpage">
       {/* <MDBContainer> */}
+
+      {/* add if statement here for loading
+      <div class="d-flex align-items-center">
+  <strong>Loading...</strong>
+  <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+</div> */}
+
+
         <h1>List of all your stuff</h1>
         {/* <div>
           {this.state.gear.map((gear, index)=>(
