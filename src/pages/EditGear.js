@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 
 //!!!!!!
-// 
+//      !!!Modal is working forget this plan. maybe delete this soon.
 //      Current plan, this is a copy of the add gear page I want to route to it
 //     then from here make the GET, and then the data placeholders. let them 
 //          change it, and then do the PUT  and redirect to the GearList
