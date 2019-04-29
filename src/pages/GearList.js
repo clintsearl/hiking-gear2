@@ -74,6 +74,7 @@ class GearList extends Component {
       headers: {
         "Content-Type": "application/json"
       }
+      
     }
     ).then(
       this.setState({

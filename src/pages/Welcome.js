@@ -29,7 +29,7 @@ const Welcome =()=> {
     return(
       <Allpage>  
             {/* <LandingImg src={staticImg}/> */}
-          <Background>stay in front!!!
+          <Background>
           </Background>
                 
           <Message>
