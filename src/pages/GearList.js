@@ -77,9 +77,10 @@ class GearList extends Component {
       
     }
     ).then(
-      this.setState({
-        modal: !this.state.modal
-      })); this.componentDidMount()
+      this.toggle()
+      // this.setState({
+      //   modal: !this.state.modal})
+      ); this.componentDidMount()
   }
 
   deleteItem = async (e) => {
@@ -192,9 +193,9 @@ class GearList extends Component {
                     </MDBInput>
                     <MDBInput type="text" name='brand' label='Brand' placeholder={this.state.editGearItem.brand} onChange={(e) => this.handleChange(e.target.value)}>
                     </MDBInput>
-                    <MDBInput type="text" name='weight' label='Weight' placeholder={this.state.editGearItem.weight} onChange={(e) => this.handleChange(e.target.value)}>
+                    <MDBInput type="text" name='weight' label={this.state.editGearItem.weight} onChange={(e) => this.handleChange(e.target.value)}>
                     </MDBInput>
-                    <MDBInput type="text" name='category' label='category' placeholder={this.state.editGearItem.category} onChange={(e) => this.handleChange(e.target.value)}>
+                    <MDBInput type="text" name='category' label={this.state.editGearItem.category} onChange={(e) => this.handleChange(e.target.value)}>
                     </MDBInput>
                   </MDBCol>
                     </MDBRow>
