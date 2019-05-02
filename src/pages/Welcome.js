@@ -10,7 +10,6 @@ const Allpage= styled.div`
 `
 
 const Background =styled.section`
-    text-align: center;
     background-image: url(${staticImg}); 
     height: 50vh;
     width:100vw;
@@ -21,8 +20,12 @@ const Background =styled.section`
 `
 const Message = styled.main`
 padding:5%;
-padding-bottom:2.5rem;
-      
+display:flex;
+min-width:100vw;
+flex-direction:column;
+justify-content: center;
+align-items: center;
+
 `
 
 const Welcome =()=> {

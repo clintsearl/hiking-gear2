@@ -17,7 +17,7 @@ const Footer = styled.footer`
   background-color:#AD9477;
   width:100vw;
   bottom:0;
-  position:absolute;
+  position:relative;
 `
 
 
@@ -30,13 +30,14 @@ class App extends Component {
         {/* <header className="App-header">
            
         </header> */}
+        <div className="container">
         <Routing/>
-
-        <Footer>
+        </div>
+        {/* <Footer>
               Clint Earl 
               link 
               link
-            </Footer>
+            </Footer> */}
       </div>
     );
   }
