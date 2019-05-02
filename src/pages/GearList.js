@@ -1,10 +1,13 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBTableFoot, MDBIcon, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBModal, MDBContainer, MDBRow, MDBCol, MDBInput} from 'mdbreact';
 import styled from 'styled-components'
-import EditGear from './EditGear'
+
 
 const Allpage = styled.main`{
   color:white;
+}`
+const Loading =styled.main`{
+
 }`
 
 
@@ -22,11 +25,6 @@ class GearList extends Component {
       _id: 0,
       name: ""
     }
-    // name:'',
-    // brand: '',
-    // weight: 0,
-    // catagory:'',
-    // units: ''
   }
   //Props are the properties themselves 
   //constructor and state building the bookshelf
@@ -40,7 +38,11 @@ class GearList extends Component {
         this.setState({ gear: result })
       });
   }
-
+  toggle =()=>{
+    this.setState({
+      modal: !this.state.modal
+    })
+  }
   openModal = async (e) => {
     await fetch(`https://hiking-api.herokuapp.com/${e}`)
       .then(result => {
@@ -50,17 +52,11 @@ class GearList extends Component {
         this.setState({ editGearItem: data })
       })
       .then(
-        this.setState({
-          modal: !this.state.modal
-        }))
+        this.toggle())
     console.log("toggle", this.state.editGearItem)
 
   }
-  toggle =()=>{
-    this.setState({
-      modal: !this.state.modal
-    })
-  }
+  
 
   editItem = async (e) => {
     e.preventDefault()
@@ -77,10 +73,8 @@ class GearList extends Component {
       
     }
     ).then(
-      this.toggle()
-      // this.setState({
-      //   modal: !this.state.modal})
-      ); this.componentDidMount()
+      this.toggle()); 
+      this.componentDidMount()
   }
 
   deleteItem = async (e) => {
@@ -116,20 +110,19 @@ class GearList extends Component {
 
   render() {
     const { editGearItem } = this.state
-
-    console.log(this.state.editGear)
+    //because of references one [] does not equal another [] it passes a reference not the exact object I decided to compare the length I could have stringified it and then compared them to see if they were identical.
+    if (this.state.gear.length === 0 ){
+return(
+    // add if statement here for loading
+    <div class="d-flex align-items-center">
+  <strong>Loading...</strong>
+  <div class="spinner-border ml-auto" role="status" aria-hidden="true" color='white'></div>
+</div>)}
+    console.log("here",this.state.gear)
     return (
 
       <Allpage>
         <MDBContainer>
-
-          {/* add if statement here for loading
-      <div class="d-flex align-items-center">
-  <strong>Loading...</strong>
-  <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
-</div> */}
-
-
           <h1>List of all your stuff</h1>
           {/* <div>
           {this.state.gear.map((gear, index)=>(
