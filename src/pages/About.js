@@ -7,7 +7,7 @@ import Lightbox from 'react-image-lightbox'
 const AllPage = styled.main`
     color:#bec8c9
   width:100vw;
-  min-hight:100vh;
+  min-height:100vh;
   
 `
 const LeftSide= styled.div`{
@@ -20,7 +20,6 @@ const RightSide= styled.div`{
         & h1{
         font-size: calc(12px + 2vmin);
         color:#c3562f;
-        text-wight:strong;
         }
         & p{
         text-align:left;

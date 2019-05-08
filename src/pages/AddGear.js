@@ -3,9 +3,23 @@ import styled from 'styled-components'
 import { MDBContainer } from 'mdbreact';
 
 
-const form= styled.main`{
-   margin-left:auto;
-   max-width:70%;
+const AllPage= styled.main`{
+  color:#bec8c9;
+  max-width:100vw;
+  height:100vh;
+  text-align:center;
+  flex-direction:column;
+  display:flex;
+  justify-content: center;
+  padding-left:10vw;
+    & form{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      
+      max-width:70vw;
+      
+    }
  }`
 
 
@@ -13,8 +27,7 @@ const form= styled.main`{
 class AddGear extends Component {  
   // constructor(props){
   //   super(props)
-    state ={
-     
+    state ={ 
       name:'',
       brand: '',
       weight: 0,
@@ -61,7 +74,8 @@ handleSubmit= async (e)=>{
     console.log(this.state)
     
     return (
-      <MDBContainer fluid>
+      <AllPage>
+        <MDBContainer fluid>
         <form onSubmit= {this.handleSubmit}>
             <div className="form-row">
                 <div className="form-group col-md-4">
@@ -106,6 +120,7 @@ handleSubmit= async (e)=>{
   <button type="submit" className="btn btn-primary" style={{justifyContent:'center'}}>Add Item</button>
 </form>
       </MDBContainer>
+      </AllPage>
     );
   }
 }

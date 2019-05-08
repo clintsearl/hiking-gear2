@@ -19,12 +19,13 @@ const Background =styled.section`
    
 `
 const Message = styled.main`
-padding:5%;
+padding:5vw 40vh
 display:flex;
 min-width:100vw;
 flex-direction:column;
 justify-content: center;
 align-items: center;
+
 
 `
 
@@ -40,6 +41,7 @@ const Welcome =()=> {
             
             <p>“It's a dangerous business, Frodo, going out your door. You step onto the road, and if you don't keep your feet, there's no knowing 
             where you might be swept off to.”</p> 
+            <p>JRR Tolkien</p>
             </Message>
             
             
