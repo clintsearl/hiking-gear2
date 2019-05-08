@@ -19,7 +19,7 @@ const Background =styled.section`
    
 `
 const Message = styled.main`
-padding:5vw 40vh
+padding:5vw 50vh
 display:flex;
 min-width:100vw;
 flex-direction:column;
