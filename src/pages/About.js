@@ -2,12 +2,13 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import {MDBIcon, MDBCol, MDBRow, MDBContainer} from 'mdbreact'
 import path from '../components/assets/path-down.jpg'
+import Lightbox from 'react-image-lightbox'
 
 const AllPage = styled.main`
     color:#bec8c9
   width:100vw;
   min-hight:100vh;
-  text-align:center;
+  
 `
 const LeftSide= styled.div`{
     padding:5%
@@ -26,29 +27,50 @@ const RightSide= styled.div`{
         }
 }`
 const List = styled.div`{
-
+    padding:5vh 20vw
+    min-hight:100vh;
+    text-align:left;
+    & h3{
+        font-size: calc(10px + 2vmin);
+        color:#c3562f;
+        text-align:center;
+        }
+    & p{
+        text-align:left;
+    }
 }`
-
+const bigImage = '../components/assets/path-down.jpg'
 
 const About=()=>{
+    const [isOpen, setisOpen] = useState()
     return(
         <AllPage>
             <MDBContainer fluid>
             <MDBRow>
             <MDBCol className="ml-auto">
            <LeftSide>
-            <img src={path} className="img-fluid"/>
+            <img src={path} className="img-fluid"
+            onClick={()=> setisOpen(true)}
+            />
+            
+            {isOpen &&(
+          <Lightbox
+            mainSrc={bigImage}     
+            onCloseRequest={() =>setisOpen(false) }  
+          />
+        )}
+            <fig-caption>Looking down at the trail to dead horse lake.</fig-caption>
            </LeftSide>
            </MDBCol>
            <MDBCol className="ml-auto">
            <RightSide>
            <h1>About this Project</h1>
-            <p>This is a work of passion, and still in progress...</p>
-            <p>There are a number of things I hope to add in the future. Some of them being short term and others I'll need to learn a number of things before they can be added.</p>
+            <p>Just like this picture from my hike to dead horse lake in the Uintas the path can be seen far below. However, the trail to get to the bottom disapears in the steep mountain switchbacks.</p>
+            <p>There are a number of things I hope to add in the future.  Some of them being short term and others I'll need to learn a number of things before they can be added.</p>
             </RightSide>
             </MDBCol>
             </MDBRow>
-            <MDBRow>
+            <MDBRow className="ml-auto">
             <List>
                <h3>List of upcoming features</h3>
             <dl>

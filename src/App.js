@@ -3,7 +3,7 @@ import './App.css';
 import Navigation from './components/navigation'
 import Routing from './components/Route'
 import styled from 'styled-components';
-
+import Navbarpage from './components/Navbar'
 // import {Link} from 'react-router-dom'
 //colors for the whole place https://www.design-seeds.com/slow-lifestyle/pineapple-tones/
 // #bec8c9  Body text
@@ -26,6 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation/>
+        {/* <Navbarpage/> */}
         {/* <header className="App-header">
            
         </header> */}
