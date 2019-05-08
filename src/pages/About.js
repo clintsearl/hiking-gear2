@@ -1,28 +1,55 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import {MDBIcon} from 'mdbreact'
-import './About.css'
+import {MDBIcon, MDBCol, MDBRow, MDBContainer} from 'mdbreact'
+import path from '../components/assets/path-down.jpg'
 
 const AllPage = styled.main`
-    color:white
+    color:#bec8c9
+  width:100vw;
+  min-hight:100vh;
+  text-align:center;
 `
-const LeftSide= styled.div`
+const LeftSide= styled.div`{
+    padding:5%
 
-`
-const RightSide= styled.div`
+}`
+const RightSide= styled.div`{
+    padding:5vh 5vw;
+    
+        & h1{
+        font-size: calc(12px + 2vmin);
+        color:#c3562f;
+        text-wight:strong;
+        }
+        & p{
+        text-align:left;
+        }
+}`
+const List = styled.div`{
 
-`
+}`
 
 
 const About=()=>{
     return(
         <AllPage>
-            <LeftSide>
-            <h1>About this Project</h1>
+            <MDBContainer fluid>
+            <MDBRow>
+            <MDBCol className="ml-auto">
+           <LeftSide>
+            <img src={path} className="img-fluid"/>
+           </LeftSide>
+           </MDBCol>
+           <MDBCol className="ml-auto">
+           <RightSide>
+           <h1>About this Project</h1>
             <p>This is a work of passion, and still in progress...</p>
             <p>There are a number of things I hope to add in the future. Some of them being short term and others I'll need to learn a number of things before they can be added.</p>
-           </LeftSide>
-           <RightSide>
+            </RightSide>
+            </MDBCol>
+            </MDBRow>
+            <MDBRow>
+            <List>
                <h3>List of upcoming features</h3>
             <dl>
                 <dt><MDBIcon icon="hiking" className='Icon'/>Authentication / User login </dt>
@@ -38,7 +65,9 @@ const About=()=>{
                 </dd>
                 
             </dl>
-            </RightSide>
+            </List>
+            </MDBRow>
+            </MDBContainer>
         </AllPage>
     )
 }

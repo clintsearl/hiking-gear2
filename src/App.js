@@ -6,12 +6,11 @@ import styled from 'styled-components';
 
 // import {Link} from 'react-router-dom'
 //colors for the whole place https://www.design-seeds.com/slow-lifestyle/pineapple-tones/
-// #B1BBBB
-// #737E7D
-// #393E43
-// #202124
-// #3E3938
-// #AD9477
+// #bec8c9  Body text
+// #2c2d31  Background Nav
+// #b98d68  Body highlights
+// #c3562f  titles accents
+
 
 const Footer = styled.footer`
   background-color:#AD9477;

@@ -2,7 +2,8 @@
   text-align: center;
   margin-left:auto;
   min-height: 100vh; 
-  background-color: #202124;
+  background-color: #2c2d31;
+
 }
 .container{
   margin:0;
@@ -17,5 +18,4 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }

@@ -2,11 +2,27 @@ import React, { Component } from 'react';
 import { MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBTableFoot, MDBIcon, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBModal, MDBContainer, MDBRow, MDBCol, MDBInput} from 'mdbreact';
 import styled from 'styled-components'
 
-
 const Allpage = styled.main`{
   color:white;
+  margin-left:auto;
+  margin-right:auto;
+  width:100vw;
 }`
 const Loading =styled.main`{
+  color:white;
+  width:100vw;
+  min-hight:100vh;
+  text-align:center;
+}`
+const LoadMessage =styled.div`{
+  color:white;
+  min-height: 80vh;
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+}`
+const Pmessage = styled.p`{
+  display:flex;
 
 }`
 
@@ -114,15 +130,21 @@ class GearList extends Component {
     if (this.state.gear.length === 0 ){
 return(
     // add if statement here for loading
-    <div class="d-flex align-items-center">
+    <Loading>
+   
+    <LoadMessage>
   <strong>Loading...</strong>
-  <div class="spinner-border ml-auto" role="status" aria-hidden="true" color='white'></div>
-</div>)}
+  
+  <div big className="spinner-border text-warning" role="status" color='primary'></div>
+  </LoadMessage>
+  <p>Just a minute as the Database wakes up.</p>
+</Loading>
+)}
     console.log("here",this.state.gear)
     return (
 
-      <Allpage>
-        <MDBContainer>
+        <Allpage>
+        <MDBContainer fluid> 
           <h1>List of all your stuff</h1>
           {/* <div>
           {this.state.gear.map((gear, index)=>(
@@ -167,7 +189,7 @@ return(
               <tr>
                 <td></td>
                 <td></td>
-                <td>Total ${}</td>
+                <td></td>
                 <td></td>
                 <td></td>
               </tr>
@@ -204,9 +226,8 @@ return(
             </MDBModal>
          
         </MDBContainer>
+        </Allpage>
 
-
-      </Allpage>
 
 
     );
