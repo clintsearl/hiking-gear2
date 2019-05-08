@@ -173,11 +173,11 @@ return(
                   <td>{gear.weight}</td>
                   <td>{gear.category}</td>
                   <td>
-                    <MDBBtn className="btn btn-outline-secondary waves-effect" value={gear._id}
+                    <MDBBtn className="btn-outline-deep-orange darken-2 waves-effect" value={gear._id}
                       onClick={(e) => this.openModal(e.target.value)}>
                       <MDBIcon icon="edit"/>
                     </MDBBtn>
-                    <MDBBtn className="btn btn-outline-secondary waves-effect" value={gear._id}
+                    <MDBBtn className="btn-outline-deep-orange darken-2 waves-effect" value={gear._id}
                       onClick={(e) => this.deleteItem(e)}>
                       <MDBIcon icon="trash-alt" className="ml-1" />
                     </MDBBtn>
