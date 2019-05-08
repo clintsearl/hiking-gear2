@@ -12,6 +12,7 @@ const AllPage= styled.main`{
   display:flex;
   justify-content: center;
   padding-left:10vw;
+
     & form{
       display:flex;
       flex-direction:column;
@@ -33,7 +34,7 @@ class AddGear extends Component {
       weight: 0,
       category:'',
       units: ''
-    // }3
+    // these aren't needed because I used arrow functions in the onClick
     // this.handleChange = this.handleChange.bind(this)
     // this.handleClick = this.handleClick.bind(this)
   }
@@ -46,8 +47,7 @@ class AddGear extends Component {
   handleClick=(e)=>{
     e.preventDefault()
     this.setState({
-      [e.target.name]: e.target.value})
-    
+      [e.target.name]: e.target.value})   
   }
 
 handleSubmit= async (e)=>{
@@ -63,7 +63,6 @@ handleSubmit= async (e)=>{
       "Content-Type": "application/json"
       }
     }
-
   // console.log("second", data)).then(response => console.log(response.json())
     )
     this.props.history.push('/gearlist')    
@@ -109,15 +108,15 @@ handleSubmit= async (e)=>{
     <div className="form-group col-md-3">
     <div className="btn-group mr-2" role="group" aria-label="First group">
     {/* <button type="button" className="btn btn-secondary" value= "lb" onClick={e =>this.setState({units: e.target.value})} name="units">lb</button> */}
-    <button type="button" className="btn btn-secondary" value= "oz" onClick={this.handleChange} name="units">oz</button>
-    <button type="button" className="btn btn-secondary" value= "g" onClick={this.handleChange} name="units">g</button> 
+    <button type="button" className="btn btn-deep-orange darken-2y" value= "oz" onClick={this.handleChange} name="units">oz</button>
+    <button type="button" className="btn btn-deep-orange darken-2" value= "g" onClick={this.handleChange} name="units">g</button> 
     </div> 
   
   
  
      
   </div>
-  <button type="submit" className="btn btn-primary" style={{justifyContent:'center'}}>Add Item</button>
+  <button type="submit" className="btn btn-deep-orange darken-2" style={{justifyContent:'center'}}>Add Item</button>
 </form>
       </MDBContainer>
       </AllPage>
