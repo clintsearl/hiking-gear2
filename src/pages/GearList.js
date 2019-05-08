@@ -11,7 +11,7 @@ const Allpage = styled.main`{
 const Loading =styled.main`{
   color:white;
   width:100vw;
-  min-hight:100vh;
+  min-height:90vh;
   text-align:center;
 }`
 const LoadMessage =styled.div`{
@@ -204,9 +204,9 @@ return(
                 <MDBModalBody>
                   <MDBRow>
                   <MDBCol md="8">
-                    <MDBInput type="text" name='name' label='Gear Name' placeholder={this.state.editGearItem.name} onChange={(e) => this.handleChange(e.target.value)}>
+                    <MDBInput type="text" name='name' label={this.state.editGearItem.name} onChange={(e) => this.handleChange(e.target.value)}>
                     </MDBInput>
-                    <MDBInput type="text" name='brand' label='Brand' placeholder={this.state.editGearItem.brand} onChange={(e) => this.handleChange(e.target.value)}>
+                    <MDBInput type="text" name='brand' label={this.state.editGearItem.brand} placeholder={this.state.editGearItem.brand} onChange={(e) => this.handleChange(e.target.value)}>
                     </MDBInput>
                     <MDBInput type="text" name='weight' label={this.state.editGearItem.weight} onChange={(e) => this.handleChange(e.target.value)}>
                     </MDBInput>
