@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import GearList from '../pages/GearList';
 import AddGear from '../pages/AddGear';
 import Welcome from '../pages/Welcome'
-
+import About from '../pages/About'
 // class Routing extends Component {
     // render() {
     //   return (
@@ -14,6 +14,7 @@ const Routing = () =>(
     <Router>
         <Switch>    
             <Route exact path="/" component={Welcome}/>
+            <Route path="/about" component={About}/>
             <Route path="/addgear" component={AddGear}/>
             <Route path="/gearlist" component={GearList}/>
         </Switch>

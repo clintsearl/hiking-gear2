@@ -1,10 +1,29 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBTableFoot, MDBIcon, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBModal, MDBContainer, MDBRow, MDBCol, MDBInput} from 'mdbreact';
 import styled from 'styled-components'
-import EditGear from './EditGear'
 
 const Allpage = styled.main`{
   color:white;
+  margin-left:auto;
+  margin-right:auto;
+  width:100vw;
+}`
+const Loading =styled.main`{
+  color:white;
+  width:100vw;
+  min-hight:100vh;
+  text-align:center;
+}`
+const LoadMessage =styled.div`{
+  color:white;
+  min-height: 80vh;
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+}`
+const Pmessage = styled.p`{
+  display:flex;
+
 }`
 
 
@@ -22,11 +41,6 @@ class GearList extends Component {
       _id: 0,
       name: ""
     }
-    // name:'',
-    // brand: '',
-    // weight: 0,
-    // catagory:'',
-    // units: ''
   }
   //Props are the properties themselves 
   //constructor and state building the bookshelf
@@ -40,7 +54,11 @@ class GearList extends Component {
         this.setState({ gear: result })
       });
   }
-
+  toggle =()=>{
+    this.setState({
+      modal: !this.state.modal
+    })
+  }
   openModal = async (e) => {
     await fetch(`https://hiking-api.herokuapp.com/${e}`)
       .then(result => {
@@ -50,17 +68,11 @@ class GearList extends Component {
         this.setState({ editGearItem: data })
       })
       .then(
-        this.setState({
-          modal: !this.state.modal
-        }))
+        this.toggle())
     console.log("toggle", this.state.editGearItem)
 
   }
-  toggle =()=>{
-    this.setState({
-      modal: !this.state.modal
-    })
-  }
+  
 
   editItem = async (e) => {
     e.preventDefault()
@@ -74,11 +86,11 @@ class GearList extends Component {
       headers: {
         "Content-Type": "application/json"
       }
+      
     }
     ).then(
-      this.setState({
-        modal: !this.state.modal
-      })); this.componentDidMount()
+      this.toggle()); 
+      this.componentDidMount()
   }
 
   deleteItem = async (e) => {
@@ -114,20 +126,25 @@ class GearList extends Component {
 
   render() {
     const { editGearItem } = this.state
-
-    console.log(this.state.editGear)
+    //because of references one [] does not equal another [] it passes a reference not the exact object I decided to compare the length I could have stringified it and then compared them to see if they were identical.
+    if (this.state.gear.length === 0 ){
+return(
+    // add if statement here for loading
+    <Loading>
+   
+    <LoadMessage>
+  <strong>Loading...</strong>
+  
+  <div big className="spinner-border text-warning" role="status" color='primary'></div>
+  </LoadMessage>
+  <p>Just a minute as the Database wakes up.</p>
+</Loading>
+)}
+    console.log("here",this.state.gear)
     return (
 
-      <Allpage>
-        <MDBContainer>
-
-          {/* add if statement here for loading
-      <div class="d-flex align-items-center">
-  <strong>Loading...</strong>
-  <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
-</div> */}
-
-
+        <Allpage>
+        <MDBContainer fluid> 
           <h1>List of all your stuff</h1>
           {/* <div>
           {this.state.gear.map((gear, index)=>(
@@ -172,7 +189,7 @@ class GearList extends Component {
               <tr>
                 <td></td>
                 <td></td>
-                <td>Total ${}</td>
+                <td></td>
                 <td></td>
                 <td></td>
               </tr>
@@ -191,9 +208,9 @@ class GearList extends Component {
                     </MDBInput>
                     <MDBInput type="text" name='brand' label='Brand' placeholder={this.state.editGearItem.brand} onChange={(e) => this.handleChange(e.target.value)}>
                     </MDBInput>
-                    <MDBInput type="text" name='weight' label='Weight' placeholder={this.state.editGearItem.weight} onChange={(e) => this.handleChange(e.target.value)}>
+                    <MDBInput type="text" name='weight' label={this.state.editGearItem.weight} onChange={(e) => this.handleChange(e.target.value)}>
                     </MDBInput>
-                    <MDBInput type="text" name='category' label='category' placeholder={this.state.editGearItem.category} onChange={(e) => this.handleChange(e.target.value)}>
+                    <MDBInput type="text" name='category' label={this.state.editGearItem.category} onChange={(e) => this.handleChange(e.target.value)}>
                     </MDBInput>
                   </MDBCol>
                     </MDBRow>
@@ -209,9 +226,8 @@ class GearList extends Component {
             </MDBModal>
          
         </MDBContainer>
+        </Allpage>
 
-
-      </Allpage>
 
 
     );

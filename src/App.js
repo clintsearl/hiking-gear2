@@ -3,21 +3,20 @@ import './App.css';
 import Navigation from './components/navigation'
 import Routing from './components/Route'
 import styled from 'styled-components';
-
+import Navbarpage from './components/Navbar'
 // import {Link} from 'react-router-dom'
 //colors for the whole place https://www.design-seeds.com/slow-lifestyle/pineapple-tones/
-// #B1BBBB
-// #737E7D
-// #393E43
-// #202124
-// #3E3938
-// #AD9477
+// #bec8c9  Body text
+// #2c2d31  Background Nav
+// #b98d68  Body highlights
+// #c3562f  titles accents
+
 
 const Footer = styled.footer`
   background-color:#AD9477;
   width:100vw;
   bottom:0;
-  position:absolute;
+  position:relative;
 `
 
 
@@ -27,16 +26,18 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation/>
+        {/* <Navbarpage/> */}
         {/* <header className="App-header">
            
         </header> */}
+        <div className="container">
         <Routing/>
-
-        <Footer>
+        </div>
+        {/* <Footer>
               Clint Earl 
               link 
               link
-            </Footer>
+            </Footer> */}
       </div>
     );
   }

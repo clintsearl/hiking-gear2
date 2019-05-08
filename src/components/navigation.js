@@ -13,7 +13,7 @@ class Navigation extends Component {
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/gearlist">Home <span class="sr-only"></span></a>
+        <a class="nav-link" href="/About">About <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/gearlist">View Gear</a>
