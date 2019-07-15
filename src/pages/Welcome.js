@@ -27,8 +27,6 @@ max-width:100vw;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-
-
 `
 
 const Welcome =()=> {

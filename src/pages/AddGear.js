@@ -5,7 +5,7 @@ import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 
 const AllPage= styled.main`
   color:#bec8c9;
-  max-width:100vw;
+  width:100vw;
   display:flex;
   text-align:center;
   flex-direction:column;
