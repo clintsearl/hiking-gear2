@@ -2,31 +2,24 @@ import React, { Component } from 'react';
 import { MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBTableFoot, MDBIcon, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBModal, MDBContainer, MDBRow, MDBCol, MDBInput} from 'mdbreact';
 import styled from 'styled-components'
 
-const Allpage = styled.main`{
+const Allpage = styled.main`
   color:white;
   margin-left:auto;
   margin-right:auto;
-  width:100vw;
-}`
-const Loading =styled.main`{
+  width:90vw;
+  padding: 5% ;
+`
+const Loading = styled.main`
   color:white;
   width:100vw;
-  min-height:90vh;
-  text-align:center;
-}`
-const LoadMessage =styled.div`{
+  margin-left:auto;
+  margin-right:auto;
+  padding: 100px;
+  `
+const LoadMessage = styled.div`
   color:white;
-  min-height: 80vh;
-  display:flex;
-  align-items: center;
-  justify-content: space-around;
-}`
-const Pmessage = styled.p`{
-  display:flex;
-
-}`
-
-
+  padding:8%;
+`
 
 class GearList extends Component {
   //State is what the data is presently
@@ -71,13 +64,22 @@ class GearList extends Component {
         this.toggle())
     console.log("toggle", this.state.editGearItem)
 
+    // try {
+    //   const response = await fetch(`https://hiking-api.herokuapp.com/${e}`);
+    //   if (response.ok) {
+    //     const data = response.json();
+    //     this.setState({ editGearItem: data })
+    //   }
+    // } catch (err) {
+
+    // }
   }
   
 
   editItem = async (e) => {
     e.preventDefault()
-    // console.log("all", this.state)
     let id = this.state.edited._id
+    console.log('circular?', this.state.edited);
     let data = JSON.stringify(this.state.edited)
     console.log("edit", data)
     await fetch(`https://hiking-api.herokuapp.com/gearlist/${id}`, {
@@ -94,12 +96,9 @@ class GearList extends Component {
   }
 
   deleteItem = async (e) => {
-    console.log("here", e.target.value)
     if (e === undefined) { return console.log("err") }
     let data = { _id: e.target.value }
-    // maybe add an if statement here to pevent it from sending an empty {} and deleting the first whatever it finds. or maybe it's not all that important because when it refreshes it will be gone and you wont need to worry about it.
     data = JSON.stringify(data)
-    // debugger
     await fetch("https://hiking-api.herokuapp.com/gearlist/", {
       method: "DELETE",
       body: data,
@@ -112,13 +111,16 @@ class GearList extends Component {
 
   handleChange = (e) => {
     // debugger
-    let edited = { ...this.state.editGearItem }
-    // let fn= (edited)=>{
-    // {edited:{e.target.name= e.target.value}}
-    // return edited}
-    // this.setState(fn(e, edited))
-    edited.name = e
-    this.setState({ edited })
+    // let edited = { ...this.state.editGearItem }
+    // // let fn= (edited)=>{
+    // // {edited:{e.target.name= e.target.value}}
+    // // return edited}
+    // // this.setState(fn(e, edited))
+    // edited.name = e
+    // this.setState({ edited})
+    // e.persist();
+    console.log('AAAA', e);
+    this.setState({ edited: { ...this.state.editGearItem, [e.target.name]: e.target.value } })
     //looks for the object key editGearItem then the object inside with the key name: and assigns it the new value.
     // {editGearItem: {name: e.target.value}},
     // this.setState({edited: {_id: this.state.editGearItem.id}});
@@ -129,9 +131,7 @@ class GearList extends Component {
     //because of references one [] does not equal another [] it passes a reference not the exact object I decided to compare the length I could have stringified it and then compared them to see if they were identical.
     if (this.state.gear.length === 0 ){
 return(
-    // add if statement here for loading
     <Loading>
-   
     <LoadMessage>
   <strong>Loading...</strong>
   
@@ -144,18 +144,12 @@ return(
     return (
 
         <Allpage>
-        <MDBContainer fluid> 
+          {/* <MDBContainer fluid> 
+       
+         <MDBRow middle>
+         <MDBCol middle size="12"> */}
           <h1>List of all your stuff</h1>
-          {/* <div>
-          {this.state.gear.map((gear, index)=>(
-            <div key={index}>
-                <h3>{gear.name}</h3>
-            </div>
-          )
-            )}
-        </div> */}
-
-          <MDBTable responsive striped >
+          <MDBTable responsive striped center>
             <MDBTableHead color="blue-grey lighten-4" >
               <tr>
                 <th>Gear Name</th>
@@ -204,13 +198,15 @@ return(
                 <MDBModalBody>
                   <MDBRow>
                   <MDBCol md="8">
-                    <MDBInput type="text" name='name' label={this.state.editGearItem.name} onChange={(e) => this.handleChange(e.target.value)}>
+                    <MDBInput type="text" name='name' label={this.state.editGearItem.name} onChange={this.handleChange}>
                     </MDBInput>
-                    <MDBInput type="text" name='brand' label={this.state.editGearItem.brand} placeholder={this.state.editGearItem.brand} onChange={(e) => this.handleChange(e.target.value)}>
+                    <MDBInput type="text" name='brand' label={this.state.editGearItem.brand} placeholder={this.state.editGearItem.brand} onChange={this.handleChange}>
                     </MDBInput>
-                    <MDBInput type="text" name='weight' label={this.state.editGearItem.weight} onChange={(e) => this.handleChange(e.target.value)}>
+                    <MDBInput type="text" name='weight' label={this.state.editGearItem.weight} onChange={this.handleChange}
+                    >
                     </MDBInput>
-                    <MDBInput type="text" name='category' label={this.state.editGearItem.category} onChange={(e) => this.handleChange(e.target.value)}>
+                    <MDBInput type="text" name='category' label={this.state.editGearItem.category} onChange={this.handleChange}
+                    >
                     </MDBInput>
                   </MDBCol>
                     </MDBRow>
@@ -224,9 +220,10 @@ return(
               </form>
 
             </MDBModal>
-         
-        </MDBContainer>
-        </Allpage>
+          {/* </MDBCol>
+          </MDBRow>
+        </MDBContainer> */}
+         </Allpage>
 
 
 

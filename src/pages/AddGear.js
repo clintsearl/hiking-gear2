@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import { MDBContainer } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 
 
-const AllPage= styled.main`{
+const AllPage= styled.main`
   color:#bec8c9;
   max-width:100vw;
-  height:100vh;
+  display:flex;
   text-align:center;
   flex-direction:column;
-  display:flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-content: center;
   padding-left:10vw;
 
     & form{
@@ -21,7 +21,7 @@ const AllPage= styled.main`{
       max-width:70vw;
       
     }
- }`
+ `
 
 
 
@@ -73,9 +73,9 @@ handleSubmit= async (e)=>{
     console.log(this.state)
     
     return (
-      <AllPage>
-        <MDBContainer fluid>
-        <form onSubmit= {this.handleSubmit}>
+       <AllPage>
+       
+        <form onSubmit= {this.handleSubmit} style={{flexGrow:1}}>
             <div className="form-row">
                 <div className="form-group col-md-4">
                     <label HTMLfor="gearName">Gear Item</label>
@@ -116,9 +116,11 @@ handleSubmit= async (e)=>{
  
      
   </div>
-  <button type="submit" className="btn btn-deep-orange darken-2" style={{justifyContent:'center'}}>Add Item</button>
+  <div className="form-group col-md-6">
+  <button type="submit" className="btn btn-deep-orange darken-2 " style={{justifyContent:'center', width:"100%"}}>Add Item</button>
+  </div>
 </form>
-      </MDBContainer>
+       
       </AllPage>
     );
   }

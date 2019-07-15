@@ -4,6 +4,7 @@ import Navigation from './components/navigation'
 import Routing from './components/Route'
 import styled from 'styled-components';
 import Navbarpage from './components/Navbar'
+import { MDBContainer } from 'mdbreact';
 // import {Link} from 'react-router-dom'
 //colors for the whole place https://www.design-seeds.com/slow-lifestyle/pineapple-tones/
 // #bec8c9  Body text
@@ -12,18 +13,19 @@ import Navbarpage from './components/Navbar'
 // #c3562f  titles accents
 
 
-const Footer = styled.footer`
-  background-color:#AD9477;
-  width:100vw;
-  bottom:0;
-  position:relative;
-`
+// const Footer = styled.footer`
+//   background-color:#AD9477;
+//   width:100vw;
+//   bottom:0;
+//   position:relative;
+// `
 
 
 
 class App extends Component {
   render() {
     return (
+      <MDBContainer fluid className="p-0">
       <div className="App">
         <Navigation/>
         {/* <Navbarpage/> */}
@@ -39,6 +41,7 @@ class App extends Component {
               link
             </Footer> */}
       </div>
+      </MDBContainer>
     );
   }
 }

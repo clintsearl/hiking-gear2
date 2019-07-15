@@ -7,6 +7,7 @@ const Allpage= styled.div`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  
 `
 
 const Background =styled.section`
@@ -19,12 +20,12 @@ const Background =styled.section`
    
 `
 const Message = styled.main`
-padding:5vw 50vh
+padding:5vw 5vh;
 display:flex;
-min-width:100vw;
+max-width:100vw;
 flex-direction:column;
-justify-content: center;
-align-items: center;
+justify-content:center;
+align-items:center;
 
 
 `
@@ -40,8 +41,8 @@ const Welcome =()=> {
             <h1>Welcome to Backpackers database</h1>
             
             <p>“It's a dangerous business, Frodo, going out your door. You step onto the road, and if you don't keep your feet, there's no knowing 
-            where you might be swept off to.”</p> 
-            <p>JRR Tolkien</p>
+            where you might be swept&nbsp;off&nbsp;to.”</p> 
+            <p><i>- JRR Tolkien</i></p>
             </Message>
             
             
