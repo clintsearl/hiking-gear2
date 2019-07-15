@@ -6,20 +6,19 @@ import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 const AllPage= styled.main`
   color:#bec8c9;
   width:100vw;
+  height:100vh;
   display:flex;
   text-align:center;
+  justify-content: center;
+  align-items: center;
   flex-direction:column;
-  justify-content: space-around;
-  align-content: center;
-  padding-left:10vw;
-
-    & form{
+    .form-row{
       display:flex;
-      flex-direction:column;
       justify-content:center;
-      
-      max-width:70vw;
-      
+      width:60vw;
+    }
+    h1{
+      padding-bottom:20px;
     }
  `
 
@@ -74,8 +73,8 @@ handleSubmit= async (e)=>{
     
     return (
        <AllPage>
-       
-        <form onSubmit= {this.handleSubmit} style={{flexGrow:1}}>
+         <h1>Fill out the info on the gear you have</h1>
+        <form onSubmit= {this.handleSubmit}>
             <div className="form-row">
                 <div className="form-group col-md-4">
                     <label HTMLfor="gearName">Gear Item</label>
@@ -86,7 +85,7 @@ handleSubmit= async (e)=>{
       <input type="text" className="form-control" name="brand" placeholder="Brand" value={this.state.brand} onChange={this.handleChange} />
     </div>
   </div>
-  <div className="form row">
+  <div className="form-row">
   
     <div className="form-group col-md-4">
       <label HTMLfor="category">Category</label>
@@ -105,19 +104,17 @@ handleSubmit= async (e)=>{
         <input type="number" step="0.01" className="form-control" name="weight" placeholder="Select the Units" value={this.state.value} onChange={this.handleChange}/>
     </div>
     </div>
+    <div className="form-row">
     <div className="form-group col-md-3">
     <div className="btn-group mr-2" role="group" aria-label="First group">
     {/* <button type="button" className="btn btn-secondary" value= "lb" onClick={e =>this.setState({units: e.target.value})} name="units">lb</button> */}
     <button type="button" className="btn btn-deep-orange darken-2y" value= "oz" onClick={this.handleChange} name="units">oz</button>
     <button type="button" className="btn btn-deep-orange darken-2" value= "g" onClick={this.handleChange} name="units">g</button> 
-    </div> 
-  
-  
- 
-     
+    </div>  
   </div>
   <div className="form-group col-md-6">
   <button type="submit" className="btn btn-deep-orange darken-2 " style={{justifyContent:'center', width:"100%"}}>Add Item</button>
+      </div>
   </div>
 </form>
        

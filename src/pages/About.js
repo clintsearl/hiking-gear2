@@ -12,6 +12,13 @@ const AllPage = styled.main`
 `
 const LeftSide= styled.div`
     padding:5%;
+
+    @media (max-width: 850px){
+        width:100vw;
+        height:auto;
+        padding:0;
+
+    }
 `
 const RightSide= styled.div`
     padding:5vh 5vw;
@@ -36,6 +43,10 @@ const List = styled.div`
     dd{
         margin-left:25px;
     }
+    @media (max-width:850px) {
+        padding:2vh 5vw;
+    }
+
 `
 
 const bigImage = '../components/assets/path-down.jpg'
@@ -44,7 +55,7 @@ const About=()=>{
     const [isOpen, setisOpen] = useState()
     return(
         <AllPage>
-            <MDBContainer fluid>
+            <MDBContainer fluid className="p-0">
             <MDBRow>
             <MDBCol className="ml-auto">
            <LeftSide>
@@ -84,7 +95,13 @@ const About=()=>{
                 <dd><MDBIcon icon="code" className="p-2"/>
                     Total weight at the bottom
                 </dd>
-                
+                <dt><MDBIcon icon="hiking" className='p-3'/>Add to pack button</dt>
+                <dd><MDBIcon icon="code" className="p-2"/>
+                    This button will help make a list of what you want to bring with you and see the total of what you want to take.
+                </dd>
+                <dd><MDBIcon icon="code" className="p-2"/>
+                    Save lists of what you took and name them. Then you can pull up lists for short hikes or long as well as summer or fall.
+                </dd>
             </dl>
             </List>
             </MDBRow>
