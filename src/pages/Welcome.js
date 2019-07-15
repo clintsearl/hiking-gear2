@@ -7,7 +7,8 @@ const Allpage= styled.div`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  
+  width:100vw;
+  padding:0;
 `
 
 const Background =styled.section`
