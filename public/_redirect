@@ -1,0 +1,4 @@
+# redirecting for netlify
+/index.html /about
+/index.html /addgear
+/index.html /gearlist

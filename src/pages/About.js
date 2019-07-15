@@ -4,17 +4,16 @@ import {MDBIcon, MDBCol, MDBRow, MDBContainer} from 'mdbreact'
 import path from '../components/assets/path-down.jpg'
 import Lightbox from 'react-image-lightbox'
 
+
 const AllPage = styled.main`
-    color:#bec8c9
+    color:#bec8c9;
   width:100vw;
   min-height:100vh;
-  
 `
-const LeftSide= styled.div`{
-    padding:5%
-
-}`
-const RightSide= styled.div`{
+const LeftSide= styled.div`
+    padding:5%;
+`
+const RightSide= styled.div`
     padding:5vh 5vw;
     
         & h1{
@@ -24,20 +23,21 @@ const RightSide= styled.div`{
         & p{
         text-align:left;
         }
-}`
-const List = styled.div`{
-    padding:5vh 20vw
-    min-hight:100vh;
+`
+const List = styled.div`
+    padding:5vh 20vw;
+    min-height:100vh;
     text-align:left;
     & h3{
         font-size: calc(10px + 2vmin);
         color:#c3562f;
         text-align:center;
         }
-    & p{
-        text-align:left;
+    dd{
+        margin-left:25px;
     }
-}`
+`
+
 const bigImage = '../components/assets/path-down.jpg'
 
 const About=()=>{
@@ -73,15 +73,15 @@ const About=()=>{
             <List>
                <h3>List of upcoming features</h3>
             <dl>
-                <dt><MDBIcon icon="hiking" className='Icon'/>Authentication / User login </dt>
-                <dd><MDBIcon icon="code" className='Icon'/>Yes currently my gear list is what everyone sees. Anyone could perhaps delete the data in my database or add the kitchen sink to my gear list.</dd>
-                <dd><MDBIcon icon="code" className='Icon'/>This will also be nessasary for when I want to send it out and let others have their own list as well.</dd>
-                <dd><MDBIcon icon="code" className='Icon'/>However, currently it's convinent to let friends, family, and hiring managers checkout my work without creating their own account and data.</dd>
-                <dt><MDBIcon icon="hiking" className='Icon'/>Adding functionality to the gear list</dt>
-                <dd><MDBIcon icon="code" className='Icon'/>
+                <dt><MDBIcon icon="hiking" className='p-3'/>Authentication / User login</dt>
+                <dd><MDBIcon icon="code" className='p-2'/>Yes currently my gear list is what everyone sees. Anyone could perhaps delete the data in my database or add the kitchen sink to my gear list.</dd>
+                <dd><MDBIcon icon="code" className='p-2'/>This will also be nessasary for when I want to send it out and let others have their own list as well.</dd>
+                <dd><MDBIcon icon="code" className='p-2'/>However, currently it's convinent to let friends, family, and hiring managers checkout my work without creating their own account and data.</dd>
+                <dt><MDBIcon icon="hiking" className='p-3'/>Adding functionality to the gear list</dt>
+                <dd><MDBIcon icon="code" className='p-2'/>
                 Sorting by catagories and weight
                 </dd>
-                <dd><MDBIcon icon="code" className='Icon'/>
+                <dd><MDBIcon icon="code" className="p-2"/>
                     Total weight at the bottom
                 </dd>
                 
