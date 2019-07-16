@@ -1,4 +1,4 @@
-This branch is to test out Material Design Bootstrap I don't want it to break what i have now so we'll see where this goes and if I want to use it.
+This is a full stack app deployed on heroku at https://hiking-gear.herokuapp.com
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
