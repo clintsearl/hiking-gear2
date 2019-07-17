@@ -6,7 +6,7 @@ const Allpage = styled.main`
   color:white;
   margin-left:auto;
   margin-right:auto;
-  width:90vw;
+  width:100vw;
   padding: 5% ;
 `
 const Loading = styled.main`
@@ -53,6 +53,7 @@ class GearList extends Component {
     })
   }
   openModal = async (e) => {
+    if(e === undefined) setTimeout(60 * 2000)
     await fetch(`https://hiking-api.herokuapp.com/${e}`)
       .then(result => {
         return result.json();
@@ -62,7 +63,7 @@ class GearList extends Component {
       })
       .then(
         this.toggle())
-    console.log("toggle", this.state.editGearItem)
+    console.log("Gear to edit", this.state.editGearItem)
 
     // try {
     //   const response = await fetch(`https://hiking-api.herokuapp.com/${e}`);
@@ -78,10 +79,10 @@ class GearList extends Component {
 
   editItem = async (e) => {
     e.preventDefault()
-    let id = this.state.edited._id
-    console.log('circular?', this.state.edited);
-    let data = JSON.stringify(this.state.edited)
-    console.log("edit", data)
+    let id = this.state.editGearItem._id
+    // console.log('circular?', this.state.edited);
+    let data = JSON.stringify(this.state.editGearItem)
+    console.log("Posting it", data)
     await fetch(`https://hiking-api.herokuapp.com/gearlist/${id}`, {
       method: "PUT",
       body: data,
@@ -111,7 +112,7 @@ class GearList extends Component {
 
   handleChange = (e) => {
     // debugger
-    // let edited = { ...this.state.editGearItem }
+    let edited = { ...this.state.editGearItem }
     // // let fn= (edited)=>{
     // // {edited:{e.target.name= e.target.value}}
     // // return edited}
@@ -119,15 +120,17 @@ class GearList extends Component {
     // edited.name = e
     // this.setState({ edited})
     // e.persist();
-    console.log('AAAA', e);
-    this.setState({ edited: { ...this.state.editGearItem, [e.target.name]: e.target.value } })
+    console.log('Changing', e.target.value);
+    this.setState({ editGearItem: {...this.state.editGearItem, [e.target.name]: e.target.value}} )
+    // debugger
+    console.log("after", this.state.editGearItem)
     //looks for the object key editGearItem then the object inside with the key name: and assigns it the new value.
     // {editGearItem: {name: e.target.value}},
     // this.setState({edited: {_id: this.state.editGearItem.id}});
   }
 
   render() {
-    const { editGearItem } = this.state
+    // const { editGearItem } = this.state
     //because of references one [] does not equal another [] it passes a reference not the exact object I decided to compare the length I could have stringified it and then compared them to see if they were identical.
     if (this.state.gear.length === 0 ){
 return(
@@ -135,12 +138,12 @@ return(
     <LoadMessage>
   <strong>Loading...</strong>
   
-  <div big className="spinner-border text-warning" role="status" color='primary'></div>
+  <div big="true" className="spinner-border text-warning" role="status" color='primary'></div>
   </LoadMessage>
-  <p>Just a minute as the Database wakes up.</p>
+  <p>Just a minute while the Database wakes up.</p>
 </Loading>
 )}
-    console.log("here",this.state.gear)
+    // console.log("here",this.state.gear)
     return (
 
         <Allpage>
@@ -149,7 +152,7 @@ return(
          <MDBRow middle>
          <MDBCol middle size="12"> */}
           <h1>List of all your stuff</h1>
-          <MDBTable responsive striped center>
+          <MDBTable responsive striped center="true">
             <MDBTableHead color="blue-grey lighten-4" >
               <tr>
                 <th>Gear Name</th>
