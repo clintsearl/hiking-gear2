@@ -8,6 +8,11 @@ const Allpage = styled.main`
   margin-right:auto;
   width:100vw;
   padding: 5% ;
+  
+  & h1{
+    font-size: calc(20px + 2vmin);
+    color:#c3562f;
+  }
 `
 const Loading = styled.main`
   color:white;
@@ -53,7 +58,7 @@ class GearList extends Component {
     })
   }
   openModal = async (e) => {
-    if(e === undefined) setTimeout(60 * 2000)
+    if(e == undefined) console.log("err")
     await fetch(`https://hiking-api.herokuapp.com/${e}`)
       .then(result => {
         return result.json();

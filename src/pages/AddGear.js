@@ -17,8 +17,10 @@ const AllPage= styled.main`
       justify-content:center;
       width:60vw;
     }
-    h1{
-      padding-bottom:20px;
+    & h1{
+      font-size: calc(20px + 2vmin);
+      color:#c3562f;
+      padding-bottom:25px;
     }
  `
 
@@ -73,7 +75,7 @@ handleSubmit= async (e)=>{
     
     return (
        <AllPage>
-         <h1>Fill out the info on the gear you have</h1>
+         <h1>Fill out the info about the gear</h1>
         <form onSubmit= {this.handleSubmit}>
             <div className="form-row">
                 <div className="form-group col-md-4">
@@ -104,7 +106,7 @@ handleSubmit= async (e)=>{
         <input type="number" step="0.01" className="form-control" name="weight" placeholder="Select the Units" value={this.state.value} onChange={this.handleChange}/>
     </div>
     </div>
-    <div className="form-row">
+    <div className="form-row" style={{justifyContent:'space-around'}}>
     <div className="form-group col-md-3">
     <div className="btn-group mr-2" role="group" aria-label="First group">
     {/* <button type="button" className="btn btn-secondary" value= "lb" onClick={e =>this.setState({units: e.target.value})} name="units">lb</button> */}
@@ -112,7 +114,7 @@ handleSubmit= async (e)=>{
     <button type="button" className="btn btn-deep-orange darken-2" value= "g" onClick={this.handleChange} name="units">g</button> 
     </div>  
   </div>
-  <div className="form-group col-md-6">
+  <div className="form-group col-md-3">
   <button type="submit" className="btn btn-deep-orange darken-2 " style={{justifyContent:'center', width:"100%"}}>Add Item</button>
       </div>
   </div>
