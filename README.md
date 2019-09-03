@@ -1,6 +1,7 @@
 # Overview
 This is a full stack app  inspired by my enjoyment of the outdoors. Check it out, deployed on heroku at https://hiking-gear.herokuapp.com
 The idea is that you can track all the backpacking equipment that you have, seeing it's weight and catagory and see how much weight you're taking with you. 
+
 New features and plans come to me all the time and there's so many more things to do with it. For now it's a fully functional Full Stack app.
 Check out the back end too. https://github.com/clintsearl/express-mongodb/tree/master 
 
