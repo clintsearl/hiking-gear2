@@ -200,7 +200,7 @@ return(
           
             <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
               <MDBModalHeader toggle={this.toggle}>
-              <p className="h4 text-center mb-4" color="black">Write to us</p>
+              <p className="h4 text-center mb-4" style={{color:"black"}}>Change what you need, leave the rest</p>
                </MDBModalHeader>
               <form onSubmit={this.editItem}>
                 <MDBModalBody>
