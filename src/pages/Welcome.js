@@ -23,7 +23,9 @@ const Background =styled.section`
 const Message = styled.main`
 padding:5vw 5vh;
 display:flex;
-max-width:100vw;
+max-width:80vw;
+margin-left:auto;
+margin-right:auto;
 flex-direction:column;
 justify-content:center;
 align-items:center;

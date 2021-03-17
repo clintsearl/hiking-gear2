@@ -157,12 +157,14 @@ return(
          <MDBRow middle>
          <MDBCol middle size="12"> */}
           <h1>List of all your stuff</h1>
+          <br/>
           <MDBTable responsive striped center="true">
             <MDBTableHead color="blue-grey lighten-4" >
               <tr>
                 <th>Gear Name</th>
                 <th>Brand</th>
                 <th>Weight</th>
+                <th>Units</th>
                 <th>Catagory</th>
                 <th>Edit / Delete</th>
               </tr>
@@ -173,6 +175,7 @@ return(
                   <td>{gear.name}</td>
                   <td>{gear.brand}</td>
                   <td>{gear.weight}</td>
+                  <td>{gear.units}</td>
                   <td>{gear.category}</td>
                   <td>
                     <MDBBtn className="btn-outline-deep-orange darken-2 waves-effect" value={gear._id}
@@ -189,6 +192,7 @@ return(
             </MDBTableBody>
             <MDBTableFoot color="blue-grey lighten-4">
               <tr>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
